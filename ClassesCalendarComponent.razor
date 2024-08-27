@@ -1,0 +1,31 @@
+﻿@page "/calendar"
+@using System.Globalization
+
+<link href="_content/iNNOTECH_Training.BootstrapComponents.ClassesCalendar/css/ClassesCalendarComponent.css" rel="stylesheet" />
+
+<div class="calendar-container">
+    <div class="calendar-header">
+        <button class="btn btn-primary" @onclick="PrevMonth">Previous</button>
+        <h3>@currentMonthName @currentYear</h3>
+        <button class="btn btn-primary" @onclick="NextMonth">Next</button>
+    </div>
+
+    <div class="calendar-days">
+        @foreach (var day in daysOfWeek)
+        {
+            <div class="day-name">@day</div>
+        }
+    </div>
+
+    <div class="calendar-grid">
+        @for (int i = 0; i < daysInMonth; i++)
+        {
+            <div class="calendar-cell @(i + 1 == DateTime.Now.Day && currentMonth == DateTime.Now.Month && currentYear == DateTime.Now.Year ? "today" : "")">
+                <span>@(i + 1)</span>
+                <!-- Placeholder for events or assignments -->
+            </div>
+        }
+    </div>
+</div>
+
+
